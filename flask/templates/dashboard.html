@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard – EasyStock{% endblock %}
+
+{% block content %}
+    <div class="dashboard-header">
+        <div class="header-text">
+            <h1>Dashboard</h1>
+            <p class="subtitle">Overview of your inventory performance</p>
+        </div>
+    </div>
+
+    <div class="stats-container">
+        <div class="stat-card blue">
+            <div class="stat-icon">📦</div>
+            <div class="stat-info"><h3>Total Products</h3><p class="stat-number">--</p></div>
+        </div>
+
+        <div class="stat-card green">
+            <div class="stat-icon">📊</div>
+            <div class="stat-info"><h3>Total Stock Volume</h3><p class="stat-number">--</p></div>
+        </div>
+
+        <div class="stat-card purple">
+            <div class="stat-icon">📈</div>
+            <div class="stat-info"><h3>Overstock Items</h3><p class="stat-number">--</p></div>
+        </div>
+    </div>
+
+    <div class="card-section recent-activity">
+        <div class="card-header">
+            <h3>Recent Activity</h3>
+        </div>
+
+        <div class="activity-filters">
+            <input type="text" id="filterSearch" placeholder="🔍 Search product..." class="filter-input">
+
+            <input type="date" id="filterDate" class="filter-input" title="Filter by date">
+
+            <select id="filterStatus" class="filter-select">
+                <option value="all">All Statuses</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                </select>
+        </div>
+
+        <div class="table-scroll-container">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Item / Product</th>
+                        <th>Action</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+html {
+    scroll-padding-top: 100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #F9FAFB;
+    color: #374151;
+    overflow-x: hidden;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: transparent;
+    z-index: 1000;
+    transition: all 0.4s ease-in-out;
+}
+
+.nav.scrolled {
+    background: rgba(23, 135, 162, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 15px 50px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #A7DAE7;
+    transition: width .3s;
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+
+.btn {
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-signin {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
+}
+.btn-signin:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: white;
+}
+
+.btn-signup {
+    background: white;
+    color: #1787A2;
+    border: 1px solid white;
+}
+.btn-signup:hover {
+    background: #A7DAE7;
+    border-color: #A7DAE7;
+    color: #115e70;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(167, 218, 231, 0.4); /* Glow effect */
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #1787A2 0%, #0e586b 100%);
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 900px;
+    animation: fadeIn 1s ease-out;
+}
+
+.title {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: #A7DAE7;
+    margin-bottom: 40px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-readmore {
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    background: transparent;
+    border: 2px solid #A7DAE7;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.btn-readmore:hover {
+    background: #A7DAE7;
+    color: #1787A2;
+}
+
+
+.about-section {
+    padding: 100px 50px;
+    background: #fff;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+.section-header p {
+    color: #6B7280;
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: #A7DAE7;
+}
+
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: #EFF6FF;
+    color: #1787A2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 20px;
+}
+
+.benefit-card h3 {
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.benefit-card p {
+    color: #6B7280;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.reviews-section {
+    padding: 100px 50px;
+    background: #F9FAFB;
+    text-align: center;
+}
+
+.reviews-section h2 {
+    font-size: 36px;
+    color: #111827;
+    margin-bottom: 50px;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.review-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    width: 320px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.stars {
+    color: #FBBF24;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    font-style: italic;
+    color: #4B5563;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.review-card h3 {
+    font-size: 14px;
+    color: #111827;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.cta-section {
+    padding: 100px 20px;
+    background: #1787A2;
+    color: white;
+    text-align: center;
+}
+
+.btn-signup-large {
+    background: white;
+    color: #1787A2;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: 0.3s;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+.btn-signup-large:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px rgba(0,0,0,0.2);
+}
+
+.footer {
+    background: #111827;
+    color: #9CA3AF;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #D1D5DB;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.footer-links a:hover {
+    color: #1787A2;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        background: #1787A2;
+        padding: 15px;
+    }
+    .nav-links {
+        margin: 15px 0;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .title { font-size: 36px; }
+    .hero { padding: 120px 20px 60px; height: auto; }
+}

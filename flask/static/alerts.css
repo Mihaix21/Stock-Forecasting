@@ -1,0 +1,233 @@
+
+.forecasts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.loading-text {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #6B7280;
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+
+.forecast-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    border: 1px solid #F3F4F6;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    max-height: 400px;
+    min-height: 250px;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border-color: #E5E7EB;
+}
+
+.card-header {
+    background: #F9FAFB;
+    padding: 20px;
+    border-bottom: 1px solid #E5E7EB;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+}
+.header-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #111827;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.meta-info {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #6B7280;
+    margin-left: -1px;
+}
+
+.meta-tag {
+    background: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid #E5E7EB;
+    font-weight: 500;
+}
+
+.del-card {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #9CA3AF;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.del-card:hover {
+    background: #FEF2F2;
+    color: #EF4444;
+}
+
+.card-body {
+    padding: 0;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.mini-table th {
+    background: #fff;
+    position: sticky;
+    top: 0;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 12px;
+    color: #6B7280;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid #E5E7EB;
+    z-index: 10;
+}
+
+.mini-table td {
+    padding: 10px 20px;
+    border-bottom: 1px solid #F9FAFB;
+    color: #374151;
+}
+
+.mini-table tr:last-child td { border-bottom: none; }
+.mini-table tr:hover { background: #F9FAFB; }
+
+.col-qty { text-align: right !important; font-weight: 600; color: #1787A2; }
+.col-date { text-align: left !important; }
+
+.card-body::-webkit-scrollbar { width: 6px; }
+.card-body::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 3px; }
+
+
+.forecast-card.add-new {
+    border: 2px dashed #1787A2;
+    background-color: #F0F9FF;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    overflow: visible;
+}
+
+.forecast-card.add-new:hover {
+    background-color: #E0F2FE;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(23, 135, 162, 0.15);
+}
+
+.add-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    line-height: 1;
+    transition: transform 0.2s;
+}
+
+.forecast-card.add-new:hover .add-icon {
+    transform: scale(1.1);
+}
+
+.forecast-card.add-new h3 {
+    color: #1787A2;
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.forecast-card.add-new p {
+    color: #6B7280;
+    margin: 0;
+    font-size: 0.95rem;
+    padding: 0 20px;
+}
+
+.add-icon {
+    font-size: 40px;
+    color: #1787A2;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+.download-card, .del-card {
+    position: static;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    transition: all 0.2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.del-card {
+    color: #9CA3AF;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.del-card:hover {
+    background: #FEF2F2;
+    color: #EF4444;
+}
+
+.download-card img {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.download-card:hover {
+    background-color: #E5E7EB;
+    transform: scale(1.1);
+}

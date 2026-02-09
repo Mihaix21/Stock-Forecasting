@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - EasyStock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="logo">
+            <i class="fa-solid fa-layer-group"></i> EasyStock
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Back to Home</a></li>
+        </ul>
+    </nav>
+
+    <section class="register-section">
+        <div class="register-card">
+            <div class="card-header">
+                <h2>Create Account</h2>
+                <p>Join us to optimize your inventory.</p>
+            </div>
+
+            <div id="error-msg" class="error-msg" style="display: none;"></div>
+
+            <form id="registerForm">
+                <div class="input-group">
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-check-double input-icon"></i>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                </div>
+
+                <button type="submit" id="submitBtn">Sign Up</button>
+
+                <div class="footer-text">
+                    <label>Have an account already?
+                        <a href="/login_page" class="register-link">Log in now!</a>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='scripts/register.js') }}" defer></script>
+
+</body>
+</html>

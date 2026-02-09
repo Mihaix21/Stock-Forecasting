@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Add Product – EasyStock{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='modifyStocks.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-header">
+        <div class="header-text">
+            <h1>Add New Product</h1>
+            <p class="subtitle">Create a new inventory item or import historical data.</p>
+        </div>
+    </div>
+
+    <div class="add-product-grid">
+
+        <div class="card-section manual-card">
+            <div class="card-header">
+                <h3>Manual Entry</h3>
+            </div>
+
+            <form id="stockHistoryForm">
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="stock_name">Product Name</label>
+                        <input type="text" id="stock_name" name="stock_name" maxlength="18" required>
+                    </div>
+
+                    <div class="form-group half">
+                        <label for="min_stock_level">Min. Stock Level</label>
+                        <input type="number" id="min_stock_level" name="min_stock_level" min="0" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Sales History Data</label>
+                    <div class="history-control-panel">
+                        <p class="hint-text">Select a date range to generate the input table.</p>
+                        <button type="button" id="openDatesModal" class="btn-secondary">
+                            Open Date Picker
+                        </button>
+                    </div>
+                </div>
+
+                <div id="formHistoryTable" class="generated-table-wrapper"></div>
+
+                <div class="form-actions-footer">
+                    <button type="submit" class="btn-primary">Save Product</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-section import-card">
+            <div class="card-header">
+                <h3>Import via Excel</h3>
+            </div>
+
+            <form id="importForm" class="import-form-layout">
+                <p class="import-desc">Save time by uploading your historical data directly.</p>
+
+                <div class="form-group">
+                    <label for="import_stock_name">Product Name (Reference)</label>
+                    <input type="text" id="import_stock_name" name="stock_name" required>
+                </div>
+
+                <div id="fileDropZone" class="file-drop-area">
+                    <input type="file" id="importFile" accept=".xlsx" hidden>
+
+                    <div class="drop-content">
+                        <div class="cloud-icon">☁️</div>
+                        <p id="dropText" class="file-text">Drag & Drop Excel file here <br><span class="file-or">or click to browse</span></p>
+                        <p id="fileName" class="file-name" hidden></p>
+                    </div>
+                </div>
+
+                <button type="button" id="excelInfoBtn" class="btn-text-info">
+                    Check Excel Format
+                </button>
+
+                <button type="submit" id="importBtn" class="btn-primary btn-import" disabled>
+                    Import File
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="addToast" class="vp-modal toast-hidden">
+        <div class="vp-modal-card toast-card-content">
+            <span id="toastClose" class="toast-close">&times;</span>
+            <div class="success-icon">✅</div>
+            <h4>Product Saved!</h4>
+            <div class="toast-actions">
+                <a href="/dashboard/viewProducts" class="btn-secondary">View Inventory</a>
+                <button id="addAnother" type="button" class="btn-primary">Add Another</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="datesModal" class="vp-modal modal-hidden">
+        <div class="vp-modal-card">
+            <span id="datesClose" class="toast-close">&times;</span>
+            <h4>Select Date Range</h4>
+            <div class="modal-inputs-row">
+                <div class="input-group"><label>Start:</label><input type="date" id="modal_start_date"></div>
+                <div class="input-group"><label>End:</label><input type="date" id="modal_end_date"></div>
+                <button type="button" id="generateHistoryInModal" class="btn-primary">Generate Table</button>
+            </div>
+            <div class="modal-table-wrapper"><div id="modalHistoryTable"></div></div>
+        </div>
+    </div>
+
+    <div id="excelInfoTip" class="vp-modal toast-hidden">
+        <div class="vp-modal-card">
+            <span id="excelInfoClose" class="toast-close">&times;</span>
+            <h4>Excel Requirements</h4>
+            <ul class="info-list">
+                <li><code>ds</code>: Date (YYYY-MM-DD)</li>
+                <li><code>daily_sales</code>: Number</li>
+                <li><code>current_stock_quantity</code>: Number</li>
+                <li><code>min_stock_level</code>: Number</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='scripts/modify_stocks.js') }}" defer></script>
+{% endblock %}

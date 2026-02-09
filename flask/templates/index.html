@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyStock - Smart Inventory Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <script src="{{ url_for('static', filename='scripts/index.js') }}" defer></script>
+
+    <nav class="nav" id="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-layer-group"></i> EasyStock
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+
+        <div class="nav-buttons">
+            <a href="/login_page" class="btn btn-signin">Login</a>
+            <a href="/register_page" class="btn btn-signup">Sign Up</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="title">Manage Inventory <br> Smart & Simple</h1>
+            <p class="subtitle">Predictability, Organization, and Success in one click.</p>
+            <div class="buttons">
+                <a href="#features" class="btn btn-readmore">Learn More</a>
+                <a href="/register_page" class="btn btn-signup">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="about-section">
+        <div class="section-header">
+            <h2>Why EasyStock?</h2>
+            <p>The complete solution for your business, powered by advanced forecasting algorithms.</p>
+        </div>
+
+        <div class="benefits-container">
+            <div class="benefit-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Smart Predictions</h3>
+                <p>Machine learning models that estimate future demand to optimize ordering.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-boxes-stacked"></i></div>
+                <h3>Stock Optimization</h3>
+                <p>Avoid dead stock and stockouts with intelligent recommendations.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-robot"></i></div>
+                <h3>Automation</h3>
+                <p>Ditch the spreadsheets. We automate replenishment calculations for you.</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3>Clear Reports</h3>
+                <p>Interactive visual charts to help you make informed decisions quickly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews-section">
+        <h2>What our clients say</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Something1"</p>
+                <h3>-Someone1</h3>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Something2"</p>
+                <h3>-Someone2</h3>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★☆</div>
+                <p class="review-text">"Something3"</p>
+                <h3>-Someone3</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta-section">
+        <h2>Ready to optimize your stock?</h2>
+        <p>Don't let inventory be a problem. Join EasyStock today.</p>
+        <a href="/register_page" class="btn btn-signup-large">Create Account Now</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy;EasyStock</p>
+        </div>
+    </footer>
+
+</body>
+</html>

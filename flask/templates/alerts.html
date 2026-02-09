@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Your Forecasts – EasyStock{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='alerts.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-header">
+        <div class="header-text">
+            <h1>Forecast History</h1>
+            <p class="subtitle">Review and manage your generated demand plans.</p>
+        </div>
+    </div>
+
+    <div id="alertsContainer" class="forecasts-grid">
+        <p class="loading-text">Loading your forecasts...</p>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='scripts/alerts.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Settings – EasyStock{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='settings.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-header">
+        <div class="header-text">
+            <h1>Account Settings</h1>
+            <p class="subtitle">Manage your profile details and security preferences.</p>
+        </div>
+    </div>
+
+    <div class="settings-grid">
+        
+        <div class="card-section">
+            <div class="card-header">
+                <h3>Profile Picture</h3>
+            </div>
+            <form id="avatarForm" enctype="multipart/form-data" autocomplete="off">
+                <div class="avatar-wrapper">
+                    <img id="avatarPreview" class="avatar-preview"
+                         src="{{ url_for('static', filename='imgs/default_profile_picture.png') }}" 
+                         alt="Avatar Preview">
+                    
+                    <div class="avatar-controls">
+                        <label for="avatar" class="btn-secondary file-label">Choose Image</label>
+                        <input id="avatar" name="avatar" type="file" accept="image/*" class="sr-only">
+                        <span id="fileName" class="file-name">No file chosen</span>
+                        <small class="hint">JPG or PNG, max 2MB</small>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Upload Picture</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-section">
+            <div class="card-header">
+                <h3>Personal Information</h3>
+            </div>
+            <form id="profileForm" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" type="text">
+                    </div>
+                    <div class="form-group half">
+                        <label for="email">Email Address</label>
+                        <input id="email" name="email" type="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="full_name">Full Name</label>
+                    <input id="full_name" name="full_name" type="text">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Profile</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-section">
+            <div class="card-header">
+                <h3>Security</h3>
+            </div>
+            <form id="passwordForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="current_password">Current Password</label>
+                    <input id="current_password" name="current_password" type="password">
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="new_password">New Password</label>
+                        <input id="new_password" name="new_password" type="password" minlength="3">
+                    </div>
+                    <div class="form-group half">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input id="confirm_password" name="confirm_password" type="password" minlength="3">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Update Password</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-section danger-card-wrapper">
+            <div class="card-header" style="border-bottom:none;">
+                <h3 style="color:#DC2626;">Danger Zone</h3>
+            </div>
+
+            <div class="danger-zone">
+                <h4 class="danger-title">Delete Account</h4>
+                <p class="danger-desc">
+                    You can request to delete your account.
+                    <strong>Your data will be permanently removed after 28 days.</strong>
+                    During this period, you can cancel the deletion by logging in and contacting support.
+                </p>
+                <button id="deleteAccount" class="btn-danger">Schedule Account Deletion</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="toast" class="toast toast-hidden">
+        <span id="toastText">Saved successfully.</span>
+        <button id="toastClose" class="toast-close">&times;</button>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='scripts/settings.js') }}" defer></script>
+{% endblock %}

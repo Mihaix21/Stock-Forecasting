@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>{% block title %}EasyStock{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>EasyStock</h2>
+
+        <a href="/dashboard" class="{% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
+        <a href="/dashboard/viewProducts" class="{% if 'viewProducts' in request.path %}active{% endif %}">Products</a>
+        <a href="/dashboard/modifyStocks" class="{% if 'modifyStocks' in request.path %}active{% endif %}">Add Stock</a>
+        <a href="/dashboard/forecast" class="{% if 'forecast' in request.path %}active{% endif %}">Forecast</a>
+        <a href="/dashboard/alerts" class="{% if 'alerts' in request.path %}active{% endif %}">History</a>
+
+        <div class="sidebar-footer">
+            <button id="infoBtn" class="info-button" title="About Developer">
+                📧
+            </button>
+        </div>
+    </div>
+
+    <div id="right-content">
+
+        <div class="profile-button">
+            <button class="profile-btn" id="profile_btn">
+                <img src="{{ url_for('static', filename='imgs/default_profile_picture.png') }}" alt="Profile">
+            </button>
+
+            <div class="dropdown-content" id="profile_dropdown">
+                <div class="dd-header">
+                    <span id="ddUserName">User</span>
+                </div>
+                <div class="dd-sep"></div> <a href="/dashboard/settings">Settings</a>
+                <a href="{{ url_for('logout') }}">Log out</a>
+            </div>
+        </div>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer class="dev-footer">
+            <div class="footer-content">
+                <span><strong>EasyStock</strong></span>
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="devModal" class="vp-modal modal-hidden">
+        <div class="vp-modal-card dev-card">
+            <span id="closeDevModal" class="toast-close">&times;</span>
+            <div class="dev-header">
+                <div class="dev-icon">👨‍💻</div>
+                <h3>Contact me</h3>
+            </div>
+            <div class="dev-body">
+                <p><strong>Contact me for any bugs, ideas, or fixes.</strong></p>
+                <div class="dev-contact">
+                    <p>📧 Email: <strong>xxx@xxx</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/profile_init.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Active Link Logic ---
+            const currentPath = window.location.pathname.replace(/\/$/, "");
+            const links = document.querySelectorAll('.sidebar a');
+
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                if(href) {
+                    const linkPath = href.replace(/\/$/, "");
+                    if (currentPath === linkPath) {
+                        link.classList.add('active');
+                    }
+                }
+            });
+
+            // --- Dev Modal Logic ---
+            const infoBtn = document.getElementById('infoBtn');
+            const devModal = document.getElementById('devModal');
+            const closeDev = document.getElementById('closeDevModal');
+
+            if (infoBtn) {
+                infoBtn.addEventListener('click', () => {
+                    devModal.classList.remove('modal-hidden');
+                });
+            }
+
+            if (closeDev) {
+                closeDev.addEventListener('click', () => {
+                    devModal.classList.add('modal-hidden');
+                });
+            }
+
+            window.addEventListener('click', (e) => {
+                if (e.target === devModal) {
+                    devModal.classList.add('modal-hidden');
+                }
+            });
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

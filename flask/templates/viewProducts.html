@@ -1,0 +1,53 @@
+
+<!-- TO DO : CONTACT ME  pe pagina viewProducts -->
+
+{% extends "base.html" %}
+
+{% block title %}Inventory List – EasyStock{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='viewProducts.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-header">
+        <div class="header-text">
+            <h1>Products Inventory</h1>
+            <p class="subtitle">Manage existing items, track history & edit details.</p>
+        </div>
+    </div>
+
+    <div id="vp-cards" class="vp-cards-grid">
+        <p>Loading products...</p>
+    </div>
+
+    <div id="editModal" class="vp-modal">
+        <div class="vp-modal-card">
+            <span id="editClose" class="toast-close">&times;</span>
+            <h4>Edit Product</h4>
+            <form id="editForm">
+                <input type="hidden" id="edit_id">
+                <div class="form-group">
+                    <label for="edit_stock_name">Name:</label>
+                    <input type="text" id="edit_stock_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit_min_stock">Min stock:</label>
+                    <input type="number" id="edit_min_stock" min="0" required>
+                </div>
+                <div class="modal-divider"></div>
+                <h5>Sales History</h5>
+                <div id="newHistoryRows" class="history-container"></div>
+                <div class="modal-actions">
+                    <button type="button" id="addHistoryRow" class="btn-secondary">+ Add Row</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/viewProducts.js') }}"></script>
+{% endblock %}
