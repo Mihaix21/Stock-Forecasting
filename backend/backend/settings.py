@@ -24,10 +24,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z2$71wml-2=!m5k!x81mxo(1gt71+peepjo9-)e-r0jah*(ya)'
+#SECRET_KEY =
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'download.jetbrains.com','account.jetbrains.com','schemastore.org']
 
@@ -122,8 +122,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mihai',
-        'USER': 'root',
-        'PASSWORD': 'mihai123',
+        'USER': '-',
+        'PASSWORD': '-',
         'HOST':  '127.0.0.1',
         'PORT': '3306',
     }

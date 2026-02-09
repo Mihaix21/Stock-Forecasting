@@ -4,7 +4,7 @@ from functools import wraps
 import io
 
 app = Flask(__name__)
-app.secret_key = 'cheie_super_secreta'
+#
 
 
 TOKEN_URL = "http://127.0.0.1:8000/api/token/"
